@@ -20,16 +20,18 @@ public class XpBottleCommand
         
         return true;
       }
+      
       int expArg;
+      
       try {
         expArg = Integer.parseInt(args[0]);
       }
-      catch (NumberFormatException exception)
-      {
+      catch (NumberFormatException exception) {
         player.sendMessage(ChatColor.DARK_RED + "Invalid amount!");
         
         return true;
       }
+      
       if (expArg < 100)
       {
         player.sendMessage(ChatColor.DARK_RED + "Minimum 100 EXP");
