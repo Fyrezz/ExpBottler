@@ -9,7 +9,7 @@ import net.fyrezz.me.expbottler.listeners.PlayerListener;
 
 public class P extends JavaPlugin {
 	
-	public static P p; //Just testing again...
+	public static P p; //TEST
 	
 	public static CustomConfig lang;
 	
