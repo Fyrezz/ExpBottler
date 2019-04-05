@@ -1,10 +1,10 @@
-package net.fyrezz.me.expbottler;
+package net.fyrezz.me.expbottler.util;
 
 import java.math.BigDecimal;
 
 import org.bukkit.entity.Player;
 
-public class ExperienceManager
+public class ExperienceCalculator
 {
   public static int getTotalExperience(Player player)
   {

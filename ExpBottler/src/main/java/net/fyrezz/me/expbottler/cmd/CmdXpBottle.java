@@ -1,14 +1,14 @@
 package net.fyrezz.me.expbottler.cmd;
 
 import net.fyrezz.me.expbottler.ExpBottler;
-import net.fyrezz.me.expbottler.ExperienceManager;
+import net.fyrezz.me.expbottler.util.ExperienceCalculator;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class XpBottleCommand
+public class CmdXpBottle
   implements CommandExecutor
 {
   public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -44,7 +44,7 @@ public class XpBottleCommand
         
         return true;
       }
-      if (ExperienceManager.getTotalExperience(player) < expArg)
+      if (ExperienceCalculator.getTotalExperience(player) < expArg)
       {
         player.sendMessage(ChatColor.DARK_RED + "You don't have enough EXP!");
         

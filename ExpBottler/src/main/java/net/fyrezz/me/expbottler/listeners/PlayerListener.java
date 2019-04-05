@@ -2,7 +2,8 @@ package net.fyrezz.me.expbottler.listeners;
 
 import java.util.List;
 import net.fyrezz.me.expbottler.ExpBottler;
-import net.fyrezz.me.expbottler.ExperienceManager;
+import net.fyrezz.me.expbottler.util.ExperienceCalculator;
+
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -32,7 +33,7 @@ public class PlayerListener
         remove.setAmount(remove.getAmount() - 1);
         player.getInventory().setItemInMainHand(remove);
         player.sendMessage("WHOOSH");
-        ExperienceManager.setTotalExperience(player, ExperienceManager.getTotalExperience(player) + exp - 2);
+        ExperienceCalculator.setTotalExperience(player, ExperienceCalculator.getTotalExperience(player) + exp - 2);
       }
     }
     else {}

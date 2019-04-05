@@ -9,8 +9,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import net.fyrezz.me.expbottler.cmd.XpBottleCommand;
+import net.fyrezz.me.expbottler.cmd.CmdXpBottle;
 import net.fyrezz.me.expbottler.listeners.PlayerListener;
+import net.fyrezz.me.expbottler.util.ExperienceCalculator;
 import net.md_5.bungee.api.ChatColor;
 
 public class ExpBottler
@@ -26,7 +27,7 @@ public class ExpBottler
   
   public void onEnable()
   {
-    getCommand("xpbottle").setExecutor(new XpBottleCommand());
+    getCommand("xpbottle").setExecutor(new CmdXpBottle());
     
     getServer().getPluginManager().registerEvents(new PlayerListener(), this);
   }
@@ -51,8 +52,8 @@ public class ExpBottler
   
   public void giveExpBottle(Player player, int exp)
   {
-    int remainingexp = ExperienceManager.getTotalExperience(player) - exp;
-    ExperienceManager.setTotalExperience(player, remainingexp);
+    int remainingexp = ExperienceCalculator.getTotalExperience(player) - exp;
+    ExperienceCalculator.setTotalExperience(player, remainingexp);
     ItemStack expBottle = new ItemStack(Material.EXPERIENCE_BOTTLE, 1);
     ItemMeta im = expBottle.getItemMeta();
     List<String> lore = new ArrayList<String>();

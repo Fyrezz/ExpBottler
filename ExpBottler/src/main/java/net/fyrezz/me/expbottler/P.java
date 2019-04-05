@@ -1,12 +1,17 @@
 package net.fyrezz.me.expbottler;
 
+import java.util.logging.Level;
+
 import org.bukkit.plugin.java.JavaPlugin;
+
+import net.fyrezz.me.expbottler.cmd.CmdXpBottle;
+import net.fyrezz.me.expbottler.listeners.PlayerListener;
 
 public class P extends JavaPlugin {
 	
 	public static P p;
 	
-	private CustomConfig lang;
+	public static CustomConfig lang;
 	
 	public P() {
 		this.p = p;
@@ -14,11 +19,16 @@ public class P extends JavaPlugin {
 	
 	@Override
 	public void onEnable() {
+		//Load all default and custom configurations
 		loadConfigs();
 		
+		//Register event listeners
 		registerListeners();
 		
-		registerManagers();
+		//Register commands
+		registerCommands();
+		
+		getLogger().log(Level.INFO, "ExpBottler has been correctly initialized");
 	}
 	
 	@Override
@@ -27,13 +37,20 @@ public class P extends JavaPlugin {
 	}
 	
 	public void loadConfigs() {
-		
 		//config.yml
 		saveDefaultConfig();
 		
 		//lang.yml
 		lang = new CustomConfig("lang.yml");
 		lang.saveDefaultConfig();
+	}
+	
+	public void registerListeners() {
+		getServer().getPluginManager().registerEvents(new PlayerListener(), this);
+	}
+	
+	public void registerCommands() {
+		getCommand("xpbottle").setExecutor(new CmdXpBottle());
 	}
 	
 }
