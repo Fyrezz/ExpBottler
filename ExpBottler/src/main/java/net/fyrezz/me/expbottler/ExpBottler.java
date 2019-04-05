@@ -37,7 +37,7 @@ public class ExpBottler
   {
     ItemStack expBottle = new ItemStack(Material.EXPERIENCE_BOTTLE, 1);
     ItemMeta im = expBottle.getItemMeta();
-    List<String> lore = new ArrayList();
+    List<String> lore = new ArrayList<String>();
     
     String name = expBottleName;
     im.setDisplayName(name);
@@ -55,7 +55,7 @@ public class ExpBottler
     ExperienceManager.setTotalExperience(player, remainingexp);
     ItemStack expBottle = new ItemStack(Material.EXPERIENCE_BOTTLE, 1);
     ItemMeta im = expBottle.getItemMeta();
-    List<String> lore = new ArrayList();
+    List<String> lore = new ArrayList<String>();
     
     String name = expBottleName;
     im.setDisplayName(name);
