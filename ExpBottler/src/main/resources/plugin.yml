@@ -1,0 +1,12 @@
+name: ExpBottler
+main: net.fyrezz.me.expbottler.ExpBottler
+version: 0.0.1
+api-version: 1.13
+authors: [Fyrezz]
+commands:
+  xpbottle:
+    description: Bottle your exp!
+    aliases: [xpb, bottlexp, bottlexp, expbottle, expb]
+  givexpbottle:
+    description: Give an EXP Bottle to a player.
+    aliases: [giveexpbottle, givexpb, giveexpb]
