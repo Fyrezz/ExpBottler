@@ -8,3 +8,18 @@
 # Set the name for Magic Exp Bottles
 # If you change it, old bottles won't work.
 bottlename: '&b&lMagic Exp Bottle&7 (Right click!)'
+
+# Minimum experience to create a Magic Bottle
+minimumexperience: 100
+
+# Maximum experience to create a Magic Bottle
+# DON'T GO OVER 32,000
+maximumexperience: 10000
+
+# Permission to create Magic Bottles
+# (/xpbottle)
+xpbottlepermission: 'expbottler.xpbottle'
+
+# Permission to give Magic Bottles
+# (/givexpbottle) - Keep this for admins
+givexpbottlepermission: 'expbottler.givexpbottle'

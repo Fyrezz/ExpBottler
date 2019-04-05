@@ -4,12 +4,13 @@ import java.util.logging.Level;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import net.fyrezz.me.expbottler.cmd.CmdGiveXpBottle;
 import net.fyrezz.me.expbottler.cmd.CmdXpBottle;
 import net.fyrezz.me.expbottler.listeners.PlayerListener;
 
 public class P extends JavaPlugin {
 	
-	public static P p; //TEST
+	public static P p;
 	
 	public static CustomConfig lang;
 	
@@ -51,6 +52,7 @@ public class P extends JavaPlugin {
 	
 	public void registerCommands() {
 		getCommand("xpbottle").setExecutor(new CmdXpBottle());
+		getCommand("givexpbottle").setExecutor(new CmdGiveXpBottle());
 	}
 	
 }

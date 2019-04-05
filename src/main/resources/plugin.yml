@@ -1,8 +1,12 @@
 name: ExpBottler
+description: Convert Experience into Magic Bottles and vice versa.
+author: Fyrezz
+website: https://github.com/Fyrezz/ExpBottler
+
 main: net.fyrezz.me.expbottler.P
 version: 0.0.1
 api-version: 1.13
-authors: [Fyrezz]
+
 commands:
   xpbottle:
     description: Bottle your exp!

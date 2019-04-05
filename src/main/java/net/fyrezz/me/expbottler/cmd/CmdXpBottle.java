@@ -1,62 +1,71 @@
 package net.fyrezz.me.expbottler.cmd;
 
-import net.fyrezz.me.expbottler.ExpBottler;
-import net.fyrezz.me.expbottler.util.ExperienceCalculator;
-import net.md_5.bungee.api.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class CmdXpBottle
-  implements CommandExecutor
-{
-  public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-    if ((sender instanceof Player)) {
-      Player player = (Player)sender;
-      
-      if (args.length < 1) {
-        player.sendMessage(ChatColor.DARK_RED + "You must introduce EXP amount: /xpbottle <amount>");
-        
-        return true;
-      }
-      
-      int expArg;
-      
-      try {
-        expArg = Integer.parseInt(args[0]);
-      }
-      catch (NumberFormatException exception) {
-        player.sendMessage(ChatColor.DARK_RED + "Invalid amount!");
-        
-        return true;
-      }
-      
-      if (expArg < 100)
-      {
-        player.sendMessage(ChatColor.DARK_RED + "Minimum 100 EXP");
-        
-        return true;
-      }
-      if (expArg > 32000)
-      {
-        player.sendMessage(ChatColor.DARK_RED + "Maxium 32,000 EXP");
-        
-        return true;
-      }
-      if (ExperienceCalculator.getTotalExperience(player) < expArg)
-      {
-        player.sendMessage(ChatColor.DARK_RED + "You don't have enough EXP!");
-        
-        return true;
-      }
-      ExpBottler.instance.giveExpBottle(player, expArg);
-      player.sendMessage(ChatColor.YELLOW + "Creating " + Integer.toString(expArg) + "EXP ExpBottle...");
-      
-      return true;
-    }
-    sender.sendMessage("Player command only!");
-    
-    return true;
-  }
+import net.fyrezz.me.expbottler.P;
+import net.fyrezz.me.expbottler.util.ExperienceCalculator;
+import net.fyrezz.me.expbottler.util.MagicExpBottle;
+import net.fyrezz.me.expbottler.util.MessageSender;
+
+public class CmdXpBottle implements CommandExecutor {
+	
+	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+		
+		if (!(sender instanceof Player)) {
+			sender.sendMessage("Player command only");
+		}
+		
+		Player player = (Player) sender;
+		
+		if (!player.hasPermission(P.p.getConfig().getString("xpbottlepermission"))) {
+			MessageSender.sndMsg(player, "nopermission");
+			
+			return true;
+		}
+		
+		if (args.length < 1) {
+			MessageSender.sndMsg(player, "notenoughargs");;
+			
+			return true;
+		}
+		
+		int expArg;
+		
+		try {
+			expArg = Integer.parseInt(args[0]);
+		} catch (NumberFormatException exception) {
+			MessageSender.sndMsg(player, "invalidargument");
+			
+			return true;
+		}
+		
+		if (expArg < P.p.getConfig().getInt("minimumexperience")) {
+			MessageSender.sndMsg(player, "minimumexperience", Integer.toString(P.p.getConfig().getInt("minimumexperience")));
+			
+			return true;
+		}
+		
+		if (expArg > P.p.getConfig().getInt("maximumexperience")) {
+			MessageSender.sndMsg(player, "maximumexperience", Integer.toString(P.p.getConfig().getInt("maximumexperience")));
+			
+			return true;
+		}
+		
+		if (ExperienceCalculator.getTotalExperience(player) < expArg) {
+			MessageSender.sndMsg(player, "notenoughexp");
+			
+			return true;
+		}
+		/*
+		 * TODO: Drop MagicExpBottle if player's empty slots < 1
+		 */
+		player.getInventory().addItem(new MagicExpBottle(expArg, player.getName()));
+		MessageSender.sndMsg(player, "bottlecreated");
+		
+		return false;
+	}
+
 }
