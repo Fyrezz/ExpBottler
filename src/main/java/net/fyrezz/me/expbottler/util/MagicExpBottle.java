@@ -10,7 +10,7 @@ import net.md_5.bungee.api.ChatColor;
 
 public class MagicExpBottle extends ItemStack {
 	
-	private static String displayName = P.lang.getConfig().getString("bottlename");
+	private static String displayName = P.p.getLang().getString("bottlename");
 	private static int amount = 1;
 	private static Material type = Material.EXPERIENCE_BOTTLE;
 	private ArrayList<String> lore = new ArrayList<String>();

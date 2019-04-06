@@ -1,7 +1,10 @@
 package net.fyrezz.me.expbottler;
 
+import java.io.File;
 import java.util.logging.Level;
 
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.fyrezz.me.expbottler.cmd.CmdGiveXpBottle;
@@ -12,18 +15,18 @@ public class P extends JavaPlugin {
 	
 	public static P p;
 	
-	public static CustomConfig lang;
+	private FileConfiguration lang;
 	
 	//Single plugin instance
 	public P() {
-		this.p = p;
+		p = p;
 	}
 	
 	@Override
 	public void onEnable() {
 		//Load all default and custom configurations
 		loadConfigs();
-		
+
 		//Register event listeners
 		registerListeners();
 		
@@ -43,8 +46,8 @@ public class P extends JavaPlugin {
 		saveDefaultConfig();
 		
 		//lang.yml
-		lang = new CustomConfig("lang.yml");
-		lang.saveDefaultConfig();
+		saveResource("lang.yml", false);
+		lang = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "lang.yml"));
 	}
 	
 	public void registerListeners() {
@@ -54,6 +57,13 @@ public class P extends JavaPlugin {
 	public void registerCommands() {
 		getCommand("xpbottle").setExecutor(new CmdXpBottle());
 		getCommand("givexpbottle").setExecutor(new CmdGiveXpBottle());
+	}
+	
+	public FileConfiguration getLang() {
+		if (lang == null) {
+			saveResource("lang.yml", false);
+		}
+		return lang;
 	}
 	
 }
