@@ -16,10 +16,14 @@ minimumexperience: 100
 # DON'T GO OVER 32,000
 maximumexperience: 10000
 
+# EXP removed as tax on bottle redeem
+# Keep it positive
+redeemtax: 5
+
 # Permission to create Magic Bottles
 # (/xpbottle)
-xpbottlepermission: 'expbottler.xpbottle'
+xpbottlepermission: expbottler.xpbottle
 
 # Permission to give Magic Bottles
 # (/givexpbottle) - Keep this for admins
-givexpbottlepermission: 'expbottler.givexpbottle'
+givexpbottlepermission: expbottler.givexpbottle

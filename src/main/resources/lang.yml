@@ -5,9 +5,24 @@
 # You like it? Feel free to contact me
 # for any custom plugin :) Fyrezz.3163
 
+# Prefix for all messages
+prefix: '&e&nExp&6&nBottler'
+
 #Display name for Magic Exp Bottles
 # If you change it, old bottles won't work.
 bottlename: '&b&lMagic Exp Bottle &7(Right Click!)'
 
-notenoughargs: '&cNot enough args!'
+# Permission message
+nopermission: '&cYou dont have permission to do that!'
 
+
+notenoughargs: '&cNot enough args!'
+invalidargument: '&cInvalid argument!'
+playernotonline: '&cThat player is not online!'
+minimumexperience: '&cBottle too small! Minimum EXP is'
+maximumexperience: '&cBottle too big! Maximum EXP is'
+notenoughexp: '&cYou dont have enough EXP to create that bottle.'
+bottlegiven: '&aYou successfully gave 1x Magic EXP Bottle of'
+bottlereceived: '&aYou received 1x Magic EXP Bottle of'
+bottlecreated: '&aYou successfully created 1x Magic EXP Bottle of'
+bottleredeemed: '&eMagic EXP Bottle redeemed!'

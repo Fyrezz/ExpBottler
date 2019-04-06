@@ -6,28 +6,31 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import net.fyrezz.me.expbottler.P;
-import net.fyrezz.me.expbottler.util.ExperienceCalculator;
 import net.fyrezz.me.expbottler.util.MagicExpBottle;
 import net.fyrezz.me.expbottler.util.MessageSender;
 
 public class CmdXpBottle implements CommandExecutor {
 	
+	private static final String correctExecution = "&c/xpbottle [amountxp]";
+	
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		
 		if (!(sender instanceof Player)) {
 			sender.sendMessage("Player command only");
+			
+			return true;
 		}
 		
 		Player player = (Player) sender;
-		
+
 		if (!player.hasPermission(P.p.getConfig().getString("xpbottlepermission"))) {
 			MessageSender.sndMsg(player, "nopermission");
 			
 			return true;
 		}
-		
+
 		if (args.length < 1) {
-			MessageSender.sndMsg(player, "notenoughargs");;
+			MessageSender.sndMsg(player, "notenoughargs", correctExecution);
 			
 			return true;
 		}
@@ -37,7 +40,7 @@ public class CmdXpBottle implements CommandExecutor {
 		try {
 			expArg = Integer.parseInt(args[0]);
 		} catch (NumberFormatException exception) {
-			MessageSender.sndMsg(player, "invalidargument");
+			MessageSender.sndMsg(player, "invalidargument", correctExecution);
 			
 			return true;
 		}
@@ -54,7 +57,9 @@ public class CmdXpBottle implements CommandExecutor {
 			return true;
 		}
 		
-		if (ExperienceCalculator.getTotalExperience(player) < expArg) {
+		int playerExp = Math.round(P.p.experienceManager.getExpToLevel(player.getLevel()) + P.p.experienceManager.getExpForProgressToNextLevel(player.getExp(), player.getLevel()));
+		
+		if (playerExp < expArg) {
 			MessageSender.sndMsg(player, "notenoughexp");
 			
 			return true;
@@ -62,8 +67,11 @@ public class CmdXpBottle implements CommandExecutor {
 		/*
 		 * TODO: Drop MagicExpBottle if player's empty slots < 1
 		 */
+		P.p.experienceManager.createBottle(player, expArg);
+		
+		MessageSender.sndMsg(player, "bottlecreated", Integer.toString(expArg) + " EXP!");
+		
 		player.getInventory().addItem(new MagicExpBottle(expArg, player.getName()));
-		MessageSender.sndMsg(player, "bottlecreated");
 		
 		return false;
 	}
