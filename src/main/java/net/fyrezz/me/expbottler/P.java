@@ -14,6 +14,7 @@ public class P extends JavaPlugin {
 	
 	public static CustomConfig lang;
 	
+	//Single plugin instance
 	public P() {
 		this.p = p;
 	}

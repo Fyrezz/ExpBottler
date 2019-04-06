@@ -8,3 +8,6 @@
 #Display name for Magic Exp Bottles
 # If you change it, old bottles won't work.
 bottlename: '&b&lMagic Exp Bottle &7(Right Click!)'
+
+notenoughargs: '&cNot enough args!'
+
