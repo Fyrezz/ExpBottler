@@ -8,12 +8,12 @@ import net.fyrezz.me.expbottler.P;
 public class MessageSender {
 	
 	public static void sndMsg(Player player, String path) {
-	    player.sendMessage(ChatColor.translateAlternateColorCodes('&', P.lang.getConfig().getString("prefix")) + ChatColor.RESET + " " + ChatColor.translateAlternateColorCodes('&', P.lang.getConfig().getString(path)));
+	    player.sendMessage(ChatColor.translateAlternateColorCodes('&', P.p.getLang().getString("prefix")) + ChatColor.RESET + " " + ChatColor.translateAlternateColorCodes('&', P.p.getLang().getString(path)));
 
 	}
 	
 	public static void sndMsg(Player player, String path, String extra) {
-	    player.sendMessage(ChatColor.translateAlternateColorCodes('&', P.lang.getConfig().getString("prefix")) + ChatColor.RESET + " " + ChatColor.translateAlternateColorCodes('&', P.lang.getConfig().getString(path)) + " " + ChatColor.translateAlternateColorCodes('&', extra));
+	    player.sendMessage(ChatColor.translateAlternateColorCodes('&', P.p.getLang().getString("prefix")) + ChatColor.RESET + " " + ChatColor.translateAlternateColorCodes('&', P.p.getLang().getString(path)) + " " + ChatColor.translateAlternateColorCodes('&', extra));
 
 	}
 
