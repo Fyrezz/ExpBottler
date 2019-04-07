@@ -35,9 +35,9 @@ public class P extends JavaPlugin {
 		//Load all default and custom configurations
 		loadConfigs();
 		
-		/*
-		 * Starting with 1.9, Player has 2 "hands". Different listeners from 1.9
-		 */
+
+		 //Starting with 1.9, Player has 2 "hands". Different listeners from 1.9
+
 		if (serverVersion.contains("1.8")) {
 			registerLegacyListeners();
 			getLogger().log(Level.INFO, "ExpBottler is using Legacy Listeners");

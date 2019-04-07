@@ -12,17 +12,28 @@ prefix: '&e&nExp&6&nBottler'
 # If you change it, old bottles won't work.
 bottlename: '&b&lMagic Exp Bottle &7(Right Click!)'
 
-# Permission message
+
 nopermission: '&cYou dont have permission to do that!'
 
-
 notenoughargs: '&cNot enough args!'
+
 invalidargument: '&cInvalid argument!'
+
 playernotonline: '&cThat player is not online!'
+
 minimumexperience: '&cBottle too small! Minimum EXP is'
+
 maximumexperience: '&cBottle too big! Maximum EXP is'
+
 notenoughexp: '&cYou dont have enough EXP to create that bottle.'
+
+# Message sent to /givexpbottle executor
 bottlegiven: '&aYou successfully gave 1x Magic EXP Bottle of'
+
+# Message sent to receiver on /givexpbottle
 bottlereceived: '&aYou received 1x Magic EXP Bottle of'
+
 bottlecreated: '&aYou successfully created 1x Magic EXP Bottle of'
+
+# On Magic Bottle right-click
 bottleredeemed: '&eMagic EXP Bottle redeemed!'
