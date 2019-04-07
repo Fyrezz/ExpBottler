@@ -4,7 +4,7 @@ author: Fyrezz
 website: https://github.com/Fyrezz/ExpBottler
 
 main: net.fyrezz.me.expbottler.P
-version: 0.0.1
+version: 1.0.0
 api-version: 1.13
 
 commands:
