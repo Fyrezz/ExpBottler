@@ -17,7 +17,7 @@ public class LegacyPlayerListener implements Listener {
 	@EventHandler
 	public void onRightClick(PlayerInteractEvent event) {
 		
-		if (event.getPlayer().getItemInHand().getType() == Material.AIR || event.getPlayer().getItemInHand() == null) {
+		if (event.getPlayer().getItemInHand().getType() == Material.AIR || event.getPlayer().getItemInHand() == null || event.getPlayer().getItemInHand().getItemMeta().getDisplayName() == null) {
 			return;
 		}
 	    
