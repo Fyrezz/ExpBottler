@@ -39,7 +39,8 @@ public class PlayerListener implements Listener {
         P.p.experienceManager.redeemBottle(player, exp);
         
         // Player never knows he loses extra -1 :)
-        MessageSender.sndMsg(player, "bottleredeemed", "&a&n+ " + exp + " EXP!&7 &o(-" + P.p.config.getInt("redeemtax") + " tax.)");
-	    }
+			MessageSender.sndMsg(player, "bottleredeemed",
+					"&a&n+ " + exp + " EXP!&7 &o(-" + P.p.config.getInt("redeemtax") + " tax.)");
+		}
 	}
 }
